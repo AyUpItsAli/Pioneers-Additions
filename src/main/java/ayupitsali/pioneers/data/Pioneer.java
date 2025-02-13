@@ -1,6 +1,8 @@
 package ayupitsali.pioneers.data;
 
+import ayupitsali.pioneers.PioneersConfig;
 import net.minecraft.text.MutableText;
+import net.minecraft.text.PlainTextContent;
 import net.minecraft.text.Text;
 import net.minecraft.util.Formatting;
 
@@ -56,8 +58,11 @@ public class Pioneer {
     }
 
     public static MutableText getLivesText(int lives, Formatting livesFormatting) {
-        MutableText livesText = Text.literal(Integer.toString(lives)).formatted(livesFormatting);
-        return lives == 1 ? Text.translatable("lives.display.single", new Object[]{livesText}) : Text.translatable("lives.display.multiple", new Object[]{livesText});
+        MutableText livesText = MutableText.of(PlainTextContent.EMPTY).append(Text.literal(Integer.toString(lives)).formatted(livesFormatting));
+        if (lives == 1)
+            return livesText.append(Text.literal(" " + PioneersConfig.getTermForLivesSingular()));
+        else
+            return livesText.append(Text.literal(" " + PioneersConfig.getTermForLivesPlural()));
     }
 
     public boolean shouldGainLivesFromKill(Pioneer killed) {

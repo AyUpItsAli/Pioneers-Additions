@@ -66,10 +66,10 @@ public enum LivesGroup {
 
     public MutableText getListTitle() {
         return switch (this) {
-            case GREEN -> Text.translatable("commands.lives.list.success.title.green").formatted(colourFormatting).formatted(Formatting.BOLD);
-            case YELLOW -> Text.translatable("commands.lives.list.success.title.yellow").formatted(colourFormatting).formatted(Formatting.BOLD);
-            case RED -> Text.translatable("commands.lives.list.success.title.red").formatted(colourFormatting).formatted(Formatting.BOLD);
-            case GHOST -> Text.translatable("commands.lives.list.success.title.ghost").formatted(colourFormatting).formatted(Formatting.BOLD);
+            case GREEN -> Text.literal(PioneersConfig.getGreenGroupTitle()).formatted(colourFormatting).formatted(Formatting.BOLD);
+            case YELLOW -> Text.literal(PioneersConfig.getYellowGroupTitle()).formatted(colourFormatting).formatted(Formatting.BOLD);
+            case RED -> Text.literal(PioneersConfig.getRedGroupTitle()).formatted(colourFormatting).formatted(Formatting.BOLD);
+            case GHOST -> Text.literal(PioneersConfig.getGhostGroupTitle()).formatted(colourFormatting).formatted(Formatting.BOLD);
         };
     }
 }

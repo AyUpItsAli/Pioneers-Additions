@@ -31,7 +31,7 @@ public abstract class MixinPlayerEntity extends LivingEntity {
                 Pioneer attacker = PioneerData.getPioneer(attackingPlayer);
                 if (attacker.shouldGainLivesFromKill(pioneer)) {
                     attacker.addLives(PioneersConfig.LIVES_GAINED_ON_KILL);
-                    attackingPlayer.sendMessage(Text.translatable("lives.gained_lives", new Object[]{Pioneer.getLivesText(PioneersConfig.LIVES_GAINED_ON_KILL, Formatting.GREEN)}));
+                    attackingPlayer.sendMessage(Text.translatable("lives.gained_lives", Pioneer.getLivesText(PioneersConfig.LIVES_GAINED_ON_KILL, Formatting.GREEN), getDisplayName()));
                 }
             }
             pioneer.addLives(-PioneersConfig.LIVES_LOST_ON_DEATH);
@@ -41,9 +41,9 @@ public abstract class MixinPlayerEntity extends LivingEntity {
                 lightningEntity.setCosmetic(true);
                 lightningEntity.setPosition(getPos());
                 world.spawnEntity(lightningEntity);
-                world.getPlayers().forEach(playerEntity -> playerEntity.sendMessage(Text.translatable("lives.out_of_lives", new Object[]{getDisplayName()})));
+                world.getPlayers().forEach(playerEntity -> playerEntity.sendMessage(Text.translatable("lives.out_of_lives", getDisplayName(), PioneersConfig.getTermForLivesPlural())));
             } else {
-                sendMessage(Text.translatable("lives.lives_changed", new Object[]{pioneer.getLivesDisplay()}));
+                sendMessage(Text.translatable("lives.lives_changed", pioneer.getLivesDisplay()));
             }
         }
     }

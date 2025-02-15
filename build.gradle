@@ -22,6 +22,9 @@ repositories {
 		name = "Terraformers"
 		url = "https://maven.terraformersmc.com/"
 	}
+	maven {
+		url = "https://maven.shedaniel.me"
+	}
 }
 
 fabricApi {
@@ -49,6 +52,9 @@ dependencies {
 
 	// ModMenu
 	modImplementation "com.terraformersmc:modmenu:${project.modmenu_version}"
+
+	// REI
+	modImplementation "me.shedaniel:RoughlyEnoughItems-fabric:${project.rei_version}"
 }
 
 processResources {

@@ -23,7 +23,7 @@ public class PioneersItems {
         return Registry.register(Registries.ITEM, Identifier.of(Pioneers.MOD_ID, id), item);
     }
 
-    public static final ItemGroup PIONEERS = FabricItemGroup.builder()
+    public static final ItemGroup PIONEERS_ADDITIONS = FabricItemGroup.builder()
             .displayName(Text.translatable("itemGroup.pioneers"))
             .icon(() -> new ItemStack(PioneersItems.LIFE_TOKEN))
             .entries(((displayContext, entries) -> {
@@ -36,6 +36,6 @@ public class PioneersItems {
 
     public static void registerItems() {
         Pioneers.LOGGER.info("Registering Items for " + Pioneers.MOD_ID);
-        Registry.register(Registries.ITEM_GROUP, Identifier.of(Pioneers.MOD_ID, "pioneers"), PIONEERS);
+        Registry.register(Registries.ITEM_GROUP, Identifier.of(Pioneers.MOD_ID, "pioneers"), PIONEERS_ADDITIONS);
     }
 }

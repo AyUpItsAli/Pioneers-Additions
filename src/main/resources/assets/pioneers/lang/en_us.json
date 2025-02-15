@@ -18,7 +18,7 @@
   "commands.lives.give.failure.give_ghost": "You cannot give %s to %s",
   "commands.lives.give.failure.max_lives": "%s already has the maximum number of %s",
   "commands.lives.give.success": "You gave %s to %s",
-  "itemGroup.pioneers": "Pioneers",
+  "itemGroup.pioneers": "Pioneers Additions",
   "item.pioneers.holy_gold": "Holy Gold",
   "item.pioneers.holy_diamond": "Holy Diamond",
   "item.pioneers.life_token": "%s Token",

@@ -1,5 +1,7 @@
 package ayupitsali.pioneers;
 
+import ayupitsali.pioneers.block.PioneersBlocks;
+import ayupitsali.pioneers.item.PioneersItems;
 import ayupitsali.pioneers.network.PioneersNetworking;
 import ayupitsali.pioneers.command.LivesCommand;
 import ayupitsali.pioneers.data.PioneerData;
@@ -29,6 +31,8 @@ public class Pioneers implements ModInitializer, ClientModInitializer, Scoreboar
 		MidnightConfig.init(MOD_ID, PioneersConfig.class);
 		CommandRegistrationCallback.EVENT.register(LivesCommand::register);
 		PioneersNetworking.registerPayloads();
+		PioneersItems.registerItems();
+		PioneersBlocks.registerBlocks();
 	}
 
 	@Override

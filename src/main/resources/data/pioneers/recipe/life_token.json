@@ -1,0 +1,27 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "LGL",
+    "DTD",
+    "LGL"
+  ],
+  "key": {
+    "L": {
+      "item": "pioneers:lively_obsidian"
+    },
+    "G": {
+      "item": "pioneers:holy_gold"
+    },
+    "D": {
+      "item": "pioneers:holy_diamond"
+    },
+    "T": {
+      "item": "minecraft:totem_of_undying"
+    }
+  },
+  "result": {
+    "id": "pioneers:life_token",
+    "count": 1
+  }
+}

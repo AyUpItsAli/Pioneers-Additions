@@ -22,7 +22,7 @@ public class PioneersNetworking {
     public static void registerClientReceivers() {
         ClientPlayNetworking.registerGlobalReceiver(PioneerStatusPayload.ID, (payload, context) -> context.client().execute(() -> {
             switch (payload.getStatus()) {
-                case PioneerStatus.GAINED_LIFE:
+                case PioneerStatus.GAINED_LIVES:
                     World world = context.player().getWorld();
                     PlayerEntity player = payload.getPioneerEntity(world);
                     context.client().particleManager.addEmitter(player, ParticleTypes.TOTEM_OF_UNDYING, 6);

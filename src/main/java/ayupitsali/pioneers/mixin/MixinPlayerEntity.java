@@ -35,8 +35,8 @@ public abstract class MixinPlayerEntity extends LivingEntity {
                 Pioneer attacker = PioneerData.getPioneer(attackingPlayer);
                 if (attacker.shouldGainLivesFromKill(pioneer)) {
                     attacker.addLives(PioneersConfig.LIVES_GAINED_ON_KILL);
-                    PioneersNetworking.sendToNearbyPlayers((ServerPlayerEntity) attackingPlayer, new PioneerStatusPayload(attackingPlayer, PioneerStatus.GAINED_LIFE));
-                    attackingPlayer.sendMessage(Text.translatable("lives.gained_lives", Pioneer.getLivesText(PioneersConfig.LIVES_GAINED_ON_KILL, Formatting.GREEN), getDisplayName()));
+                    PioneersNetworking.sendToNearbyPlayers((ServerPlayerEntity) attackingPlayer, new PioneerStatusPayload(attackingPlayer, PioneerStatus.GAINED_LIVES));
+                    attackingPlayer.sendMessage(Text.translatable("lives.gained_lives.kill", Pioneer.getLivesText(PioneersConfig.LIVES_GAINED_ON_KILL, Formatting.GREEN), getDisplayName()));
                 }
             }
             if (pioneer.addLives(-PioneersConfig.LIVES_LOST_ON_DEATH) == 0) {

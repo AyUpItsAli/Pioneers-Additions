@@ -12,6 +12,7 @@ public class PioneersConfig extends MidnightConfig {
     @Entry(category = "lives", min = 1) public static int LIVES_LOST_ON_DEATH = 1;
     @Entry(category = "lives", min = 1) public static int LIVES_GAINED_ON_KILL = 1;
     @Entry(category = "lives") public static boolean ENABLE_GIVE_COMMAND = true;
+    @Entry(category = "lives") public static boolean ENABLE_LIFE_TOKEN = true;
     @Comment(category = "lives", centered = true) public static Comment display;
     @Entry(category = "lives") public static String TERM_FOR_LIVES_SINGULAR = "life";
     @Entry(category = "lives") public static String TERM_FOR_LIVES_PLURAL = "lives";

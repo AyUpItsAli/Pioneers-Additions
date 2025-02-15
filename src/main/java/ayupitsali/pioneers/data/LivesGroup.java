@@ -6,9 +6,9 @@ import net.minecraft.text.Text;
 import net.minecraft.util.Formatting;
 
 public enum LivesGroup {
-    GREEN(PioneersConfig.GREEN_LIVES, Formatting.GREEN),
-    YELLOW(PioneersConfig.YELLOW_LIVES, Formatting.YELLOW),
-    RED(PioneersConfig.RED_LIVES, Formatting.RED),
+    GREEN(Math.max(PioneersConfig.GREEN_LIVES, 1), Formatting.GREEN),
+    YELLOW(Math.max(PioneersConfig.YELLOW_LIVES, 1), Formatting.YELLOW),
+    RED(Math.max(PioneersConfig.RED_LIVES, 1), Formatting.RED),
     GHOST(0, Formatting.GRAY);
 
     private final int lives;
@@ -64,12 +64,16 @@ public enum LivesGroup {
         return colourFormatting;
     }
 
-    public MutableText getListTitle() {
+    public String getName() {
         return switch (this) {
-            case GREEN -> Text.literal(PioneersConfig.getGreenGroupTitle()).formatted(colourFormatting).formatted(Formatting.BOLD);
-            case YELLOW -> Text.literal(PioneersConfig.getYellowGroupTitle()).formatted(colourFormatting).formatted(Formatting.BOLD);
-            case RED -> Text.literal(PioneersConfig.getRedGroupTitle()).formatted(colourFormatting).formatted(Formatting.BOLD);
-            case GHOST -> Text.literal(PioneersConfig.getGhostGroupTitle()).formatted(colourFormatting).formatted(Formatting.BOLD);
+            case GREEN -> PioneersConfig.getGreenGroupName();
+            case YELLOW -> PioneersConfig.getYellowGroupName();
+            case RED -> PioneersConfig.getRedGroupName();
+            case GHOST -> PioneersConfig.getGhostGroupName();
         };
+    }
+
+    public MutableText getDisplayName() {
+        return Text.literal(getName()).formatted(colourFormatting);
     }
 }

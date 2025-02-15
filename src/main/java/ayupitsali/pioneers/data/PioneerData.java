@@ -46,9 +46,8 @@ public class PioneerData implements AutoSyncedComponent {
 
     // Must accept player as LivingEntity instead of PlayerEntity, so that MixinPlayerEntity can be passed
     public static Pioneer getPioneer(LivingEntity player) {
-        if (player instanceof PlayerEntity playerEntity) {
+        if (player instanceof PlayerEntity playerEntity)
             return Pioneers.PIONEER_DATA.get(playerEntity.getScoreboard()).getPioneer(playerEntity.getGameProfile());
-        }
         return null;
     }
 

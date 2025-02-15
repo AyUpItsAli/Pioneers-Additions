@@ -1,7 +1,9 @@
 package ayupitsali.pioneers;
 
+import ayupitsali.pioneers.network.PioneersNetworking;
 import ayupitsali.pioneers.command.LivesCommand;
 import ayupitsali.pioneers.data.PioneerData;
+import net.fabricmc.api.ClientModInitializer;
 import org.ladysnake.cca.api.v3.component.ComponentKey;
 import org.ladysnake.cca.api.v3.component.ComponentRegistry;
 import org.ladysnake.cca.api.v3.scoreboard.ScoreboardComponentFactoryRegistry;
@@ -14,7 +16,7 @@ import net.minecraft.util.Identifier;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class Pioneers implements ModInitializer, ScoreboardComponentInitializer {
+public class Pioneers implements ModInitializer, ClientModInitializer, ScoreboardComponentInitializer {
 	public static final String MOD_ID = "pioneers";
     public static final Logger LOGGER = LoggerFactory.getLogger(MOD_ID);
 
@@ -26,6 +28,12 @@ public class Pioneers implements ModInitializer, ScoreboardComponentInitializer 
 		LOGGER.info("Initialising Pioneers Additions!");
 		MidnightConfig.init(MOD_ID, PioneersConfig.class);
 		CommandRegistrationCallback.EVENT.register(LivesCommand::register);
+		PioneersNetworking.registerPayloads();
+	}
+
+	@Override
+	public void onInitializeClient() {
+		PioneersNetworking.registerClientReceivers();
 	}
 
 	@Override

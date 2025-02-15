@@ -1,13 +1,17 @@
 package ayupitsali.pioneers.mixin;
 
 import ayupitsali.pioneers.PioneersConfig;
+import ayupitsali.pioneers.client.network.PioneerStatusPayload;
 import ayupitsali.pioneers.data.LivesGroup;
 import ayupitsali.pioneers.data.Pioneer;
 import ayupitsali.pioneers.data.PioneerData;
+import ayupitsali.pioneers.data.PioneerStatus;
+import ayupitsali.pioneers.helper.PioneersUtils;
+import ayupitsali.pioneers.network.PioneersNetworking;
 import net.minecraft.entity.EntityType;
-import net.minecraft.entity.LightningEntity;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.text.Text;
 import net.minecraft.util.Formatting;
 import net.minecraft.world.World;
@@ -31,17 +35,12 @@ public abstract class MixinPlayerEntity extends LivingEntity {
                 Pioneer attacker = PioneerData.getPioneer(attackingPlayer);
                 if (attacker.shouldGainLivesFromKill(pioneer)) {
                     attacker.addLives(PioneersConfig.LIVES_GAINED_ON_KILL);
+                    PioneersNetworking.sendToNearbyPlayers((ServerPlayerEntity) attackingPlayer, new PioneerStatusPayload(attackingPlayer, PioneerStatus.GAINED_LIFE));
                     attackingPlayer.sendMessage(Text.translatable("lives.gained_lives", Pioneer.getLivesText(PioneersConfig.LIVES_GAINED_ON_KILL, Formatting.GREEN), getDisplayName()));
                 }
             }
-            pioneer.addLives(-PioneersConfig.LIVES_LOST_ON_DEATH);
-            if (pioneer.getLives() <= 0) {
-                World world = getWorld();
-                LightningEntity lightningEntity = new LightningEntity(EntityType.LIGHTNING_BOLT, world);
-                lightningEntity.setCosmetic(true);
-                lightningEntity.setPosition(getPos());
-                world.spawnEntity(lightningEntity);
-                world.getPlayers().forEach(playerEntity -> playerEntity.sendMessage(Text.translatable("lives.out_of_lives", getDisplayName(), PioneersConfig.getTermForLivesPlural())));
+            if (pioneer.addLives(-PioneersConfig.LIVES_LOST_ON_DEATH) == 0) {
+                PioneersUtils.handleOutOfLives(this);
             } else {
                 sendMessage(Text.translatable("lives.lives_changed", pioneer.getLivesDisplay()));
             }

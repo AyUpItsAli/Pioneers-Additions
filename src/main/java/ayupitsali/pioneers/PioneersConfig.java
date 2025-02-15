@@ -11,15 +11,16 @@ public class PioneersConfig extends MidnightConfig {
     @Entry(category = "lives", min = 1) public static int RED_LIVES = 3;
     @Entry(category = "lives", min = 1) public static int LIVES_LOST_ON_DEATH = 1;
     @Entry(category = "lives", min = 1) public static int LIVES_GAINED_ON_KILL = 1;
+    @Entry(category = "lives") public static boolean ENABLE_GIVE_COMMAND = true;
     @Comment(category = "lives", centered = true) public static Comment display;
     @Entry(category = "lives") public static String TERM_FOR_LIVES_SINGULAR = "life";
     @Entry(category = "lives") public static String TERM_FOR_LIVES_PLURAL = "lives";
     @Entry(category = "lives") public static String TERM_FOR_PLAYERS_SINGULAR = "pioneer";
     @Entry(category = "lives") public static String TERM_FOR_PLAYERS_PLURAL = "pioneers";
-    @Entry(category = "lives") public static String GREEN_GROUP_TITLE = "Green Pioneers";
-    @Entry(category = "lives") public static String YELLOW_GROUP_TITLE = "Yellow Pioneers";
-    @Entry(category = "lives") public static String RED_GROUP_TITLE = "Red Pioneers";
-    @Entry(category = "lives") public static String GHOST_GROUP_TITLE = "Ghosts";
+    @Entry(category = "lives") public static String GREEN_GROUP_NAME = "Green Pioneers";
+    @Entry(category = "lives") public static String YELLOW_GROUP_NAME = "Yellow Pioneers";
+    @Entry(category = "lives") public static String RED_GROUP_NAME = "Red Pioneers";
+    @Entry(category = "lives") public static String GHOST_GROUP_NAME = "Ghosts";
 
     public static String getTermForLivesSingular() {
         return TERM_FOR_LIVES_SINGULAR.strip().toLowerCase();
@@ -33,16 +34,16 @@ public class PioneersConfig extends MidnightConfig {
     public static String getTermForPlayersPlural() {
         return TERM_FOR_PLAYERS_PLURAL.strip().toLowerCase();
     }
-    public static String getGreenGroupTitle() {
-        return GREEN_GROUP_TITLE.strip();
+    public static String getGreenGroupName() {
+        return GREEN_GROUP_NAME.strip();
     }
-    public static String getYellowGroupTitle() {
-        return YELLOW_GROUP_TITLE.strip();
+    public static String getYellowGroupName() {
+        return YELLOW_GROUP_NAME.strip();
     }
-    public static String getRedGroupTitle() {
-        return RED_GROUP_TITLE.strip();
+    public static String getRedGroupName() {
+        return RED_GROUP_NAME.strip();
     }
-    public static String getGhostGroupTitle() {
-        return GHOST_GROUP_TITLE.strip();
+    public static String getGhostGroupName() {
+        return GHOST_GROUP_NAME.strip();
     }
 }

@@ -19,6 +19,9 @@
 		"main": [
 			"ayupitsali.pioneers.Pioneers"
 		],
+		"client": [
+			"ayupitsali.pioneers.Pioneers"
+		],
 		"fabric-datagen": [
 			"ayupitsali.pioneers.PioneersDataGenerator"
 		],

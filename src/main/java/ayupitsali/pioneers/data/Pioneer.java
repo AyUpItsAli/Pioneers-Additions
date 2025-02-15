@@ -43,14 +43,15 @@ public class Pioneer {
         return lives;
     }
 
-    public void setLives(int lives) {
+    public int setLives(int lives) {
         this.lives = Math.min(Math.max(lives, 0), LivesGroup.getTotalLives());
         livesGroup = LivesGroup.getGroupForLives(this.lives);
         component.sync();
+        return this.lives;
     }
 
-    public void addLives(int amount) {
-        setLives(lives + amount);
+    public int addLives(int amount) {
+        return setLives(lives + amount);
     }
 
     public MutableText getLivesDisplay() {

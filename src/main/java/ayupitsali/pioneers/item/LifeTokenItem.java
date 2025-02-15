@@ -15,24 +15,18 @@ import net.minecraft.server.world.ServerWorld;
 import net.minecraft.text.Text;
 import net.minecraft.util.Formatting;
 import net.minecraft.util.Hand;
-import net.minecraft.util.Rarity;
 import net.minecraft.util.TypedActionResult;
 import net.minecraft.world.World;
 import org.apache.commons.lang3.StringUtils;
 
 public class LifeTokenItem extends ShinyItem {
     public LifeTokenItem() {
-        super(new Item.Settings().maxCount(16).rarity(Rarity.EPIC));
+        super(true, Formatting.LIGHT_PURPLE, new Item.Settings().maxCount(16));
     }
 
     @Override
     public Text getName() {
         return Text.translatable(getTranslationKey(), StringUtils.capitalize(PioneersConfig.getTermForLivesSingular()));
-    }
-
-    @Override
-    public Text getName(ItemStack stack) {
-        return getName();
     }
 
     @Override

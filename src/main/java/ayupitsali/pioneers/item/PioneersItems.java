@@ -9,14 +9,14 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.text.Text;
+import net.minecraft.util.Formatting;
 import net.minecraft.util.Identifier;
-import net.minecraft.util.Rarity;
 
 public class PioneersItems {
-    public static final Item HOLY_GOLD = registerItem("holy_gold",
-            new ShinyItem(new Item.Settings().rarity(Rarity.RARE)));
+    public static final Item HOLY_GOLD_INGOT = registerItem("holy_gold_ingot",
+            new ShinyItem(true, Formatting.YELLOW, new Item.Settings()));
     public static final Item HOLY_DIAMOND = registerItem("holy_diamond",
-            new ShinyItem(new Item.Settings().rarity(Rarity.RARE)));
+            new ShinyItem(true, Formatting.AQUA, new Item.Settings()));
     public static final Item LIFE_TOKEN = registerItem("life_token", new LifeTokenItem());
 
     private static Item registerItem(String id, Item item) {
@@ -29,7 +29,7 @@ public class PioneersItems {
             .entries(((displayContext, entries) -> {
                 entries.add(PioneersBlocks.DEPRESSED_OBSIDIAN);
                 entries.add(PioneersBlocks.LIVELY_OBSIDIAN);
-                entries.add(HOLY_GOLD);
+                entries.add(HOLY_GOLD_INGOT);
                 entries.add(HOLY_DIAMOND);
                 entries.add(PioneersItems.LIFE_TOKEN);
             })).build();

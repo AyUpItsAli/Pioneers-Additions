@@ -9,22 +9,17 @@ import net.minecraft.util.Formatting;
 public class Pioneer {
     private final PioneerData component;
     private final String name;
-    private LivesGroup livesGroup;
     private int lives;
+    private LivesGroup livesGroup;
 
-    public Pioneer(PioneerData component, String name, LivesGroup livesGroup, int lives) {
+    public Pioneer(PioneerData component, String name, int lives) {
         this.component = component;
         this.name = name;
-        this.livesGroup = livesGroup;
-        this.lives = lives;
-    }
-
-    public Pioneer(PioneerData component, String name, LivesGroup livesGroup) {
-        this(component, name, livesGroup, livesGroup.getMaxLives());
+        setLives(lives);
     }
 
     public Pioneer(PioneerData component, String name) {
-        this(component, name, LivesGroup.getDefaultGroup());
+        this(component, name, LivesGroup.getDefaultGroup().getMaxLives());
     }
 
     public String getName() {
@@ -33,10 +28,6 @@ public class Pioneer {
 
     public MutableText getDisplayName() {
         return Text.literal(name).formatted(livesGroup.getColourFormatting());
-    }
-
-    public LivesGroup getLivesGroup() {
-        return livesGroup;
     }
 
     public int getLives() {
@@ -52,6 +43,10 @@ public class Pioneer {
 
     public int addLives(int amount) {
         return setLives(lives + amount);
+    }
+
+    public LivesGroup getLivesGroup() {
+        return livesGroup;
     }
 
     public MutableText getLivesDisplay() {

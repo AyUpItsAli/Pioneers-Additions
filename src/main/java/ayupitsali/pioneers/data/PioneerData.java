@@ -37,10 +37,8 @@ public class PioneerData implements AutoSyncedComponent {
 
     public Pioneer getPioneer(GameProfile profile) {
         String id = profile.getId().toString();
-        if (!pioneerExists(profile)) {
+        if (!pioneerExists(profile))
             pioneers.put(id, new Pioneer(this, profile.getName()));
-            sync();
-        }
         return pioneers.get(id);
     }
 
@@ -58,9 +56,8 @@ public class PioneerData implements AutoSyncedComponent {
             if (element instanceof NbtCompound compound) {
                 String id = compound.getString("id");
                 String name = compound.getString("name");
-                LivesGroup livesGroup = LivesGroup.values()[compound.getInt("livesGroup")];
                 int lives = compound.getInt("lives");
-                pioneers.put(id, new Pioneer(this, name, livesGroup, lives));
+                pioneers.put(id, new Pioneer(this, name, lives));
             }
         }));
     }
@@ -72,7 +69,6 @@ public class PioneerData implements AutoSyncedComponent {
             NbtCompound compound = new NbtCompound();
             compound.putString("id", id);
             compound.putString("name", pioneer.getName());
-            compound.putInt("livesGroup", pioneer.getLivesGroup().ordinal());
             compound.putInt("lives", pioneer.getLives());
             list.add(compound);
         });

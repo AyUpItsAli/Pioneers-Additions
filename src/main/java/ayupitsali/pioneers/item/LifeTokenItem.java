@@ -51,6 +51,6 @@ public class LifeTokenItem extends ShinyItem {
         PioneersNetworking.sendToNearbyPlayers((ServerPlayerEntity) user, new PioneerStatusPayload(user, PioneerStatus.GAINED_LIVES));
         user.sendMessage(Text.translatable("lives.gained_lives", Pioneer.getLivesText(1, Formatting.GREEN)));
         stack.decrementUnlessCreative(1, user);
-        return TypedActionResult.success(stack);
+        return TypedActionResult.success(stack, false);
     }
 }

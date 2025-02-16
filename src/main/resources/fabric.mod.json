@@ -3,7 +3,7 @@
 	"id": "pioneers",
 	"version": "${version}",
 	"name": "Pioneers Additions",
-	"description": "Adds custom features and game mechanics used on Pioneers SMP.",
+	"description": "Customisable lives system inspired by The Life Series, and various other additions for Pioneers SMP.",
 	"authors": [
 		"AyUpItsAli"
 	],

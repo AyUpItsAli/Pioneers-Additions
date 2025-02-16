@@ -16,7 +16,7 @@ public class PioneersUtils {
             lightningEntity.setCosmetic(true);
             lightningEntity.setPosition(playerEntity.getPos());
             world.spawnEntity(lightningEntity);
-            world.getPlayers().forEach(plr -> plr.sendMessage(Text.translatable("lives.out_of_lives", playerEntity.getDisplayName(), PioneersConfig.getTermForLivesPlural())));
+            world.getPlayers().forEach(plr -> plr.sendMessage(Text.translatable("lives.out_of_lives", playerEntity.getDisplayName(), PioneersConfig.getTermForLivesPlural()), false));
         }
     }
 }

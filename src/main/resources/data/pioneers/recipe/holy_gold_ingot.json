@@ -7,9 +7,7 @@
     "GGG"
   ],
   "key": {
-    "G": {
-      "item": "minecraft:gold_block"
-    }
+    "G": "minecraft:gold_block"
   },
   "result": {
     "id": "pioneers:holy_gold_ingot",

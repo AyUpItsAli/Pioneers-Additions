@@ -15,9 +15,13 @@ public class ShinyItem extends Item {
         this.formatting = formatting;
     }
 
+    protected Text getUnformattedName() {
+        return getName();
+    }
+
     @Override
     public Text getName(ItemStack stack) {
-        return getName().copy().formatted(formatting);
+        return getUnformattedName().copy().formatted(formatting);
     }
 
     @Override

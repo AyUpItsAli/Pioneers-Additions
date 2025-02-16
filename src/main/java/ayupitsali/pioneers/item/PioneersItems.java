@@ -6,21 +6,28 @@ import net.fabricmc.fabric.api.itemgroup.v1.FabricItemGroup;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.Items;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
+import net.minecraft.registry.RegistryKey;
+import net.minecraft.registry.RegistryKeys;
 import net.minecraft.text.Text;
 import net.minecraft.util.Formatting;
 import net.minecraft.util.Identifier;
 
+import java.util.function.Function;
+
 public class PioneersItems {
     public static final Item HOLY_GOLD_INGOT = registerItem("holy_gold_ingot",
-            new ShinyItem(true, Formatting.YELLOW, new Item.Settings()));
+            (settings) -> new ShinyItem(true, Formatting.YELLOW, settings), new Item.Settings());
     public static final Item HOLY_DIAMOND = registerItem("holy_diamond",
-            new ShinyItem(true, Formatting.AQUA, new Item.Settings()));
-    public static final Item LIFE_TOKEN = registerItem("life_token", new LifeTokenItem());
+            (settings) -> new ShinyItem(true, Formatting.AQUA, settings), new Item.Settings());
+    public static final Item LIFE_TOKEN = registerItem("life_token",
+            LifeTokenItem::new, new Item.Settings().maxCount(16));
 
-    private static Item registerItem(String id, Item item) {
-        return Registry.register(Registries.ITEM, Identifier.of(Pioneers.MOD_ID, id), item);
+    private static Item registerItem(String path, Function<Item.Settings, Item> factory, Item.Settings settings) {
+        RegistryKey<Item> registryKey = RegistryKey.of(RegistryKeys.ITEM, Identifier.of(Pioneers.MOD_ID, path));
+        return Items.register(registryKey, factory, settings);
     }
 
     public static final ItemGroup PIONEERS_ADDITIONS = FabricItemGroup.builder()

@@ -7,12 +7,8 @@
     "OCO"
   ],
   "key": {
-    "O": {
-      "item": "minecraft:obsidian"
-    },
-    "C": {
-      "item": "minecraft:crying_obsidian"
-    }
+    "O": "minecraft:obsidian",
+    "C": "minecraft:crying_obsidian"
   },
   "result": {
     "id": "pioneers:miserable_obsidian",

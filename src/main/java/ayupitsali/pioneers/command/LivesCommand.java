@@ -135,7 +135,7 @@ public class LivesCommand {
         PlayerEntity otherPlayer = world.getPlayerByUuid(profile.getId());
         if (otherPlayer != null) {
             PioneersNetworking.sendToNearbyPlayers((ServerPlayerEntity) otherPlayer, new PioneerStatusPayload(otherPlayer, PioneerStatus.GAINED_LIVES));
-            otherPlayer.sendMessage(Text.translatable("lives.lives_received", player.getDisplayName(), Pioneer.getLivesText(livesGiven, Formatting.GREEN)));
+            otherPlayer.sendMessage(Text.translatable("lives.lives_received", player.getDisplayName(), Pioneer.getLivesText(livesGiven, Formatting.GREEN)), false);
         }
         context.getSource().sendFeedback(() -> Text.translatable("commands.lives.give.success", Pioneer.getLivesText(livesGiven, Formatting.GREEN), other.getDisplayName()), false);
         if (pioneer.addLives(-livesGiven) == 0)

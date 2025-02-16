@@ -16,9 +16,13 @@ public class ShinyBlockItem extends BlockItem {
         this.formatting = formatting;
     }
 
+    protected Text getUnformattedName() {
+        return getName();
+    }
+
     @Override
     public Text getName(ItemStack stack) {
-        return getName().copy().formatted(formatting);
+        return getUnformattedName().copy().formatted(formatting);
     }
 
     @Override

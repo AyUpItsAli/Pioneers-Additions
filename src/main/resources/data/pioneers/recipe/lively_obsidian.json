@@ -7,12 +7,8 @@
     "RRR"
   ],
   "key": {
-    "R": {
-      "item": "minecraft:redstone_block"
-    },
-    "D": {
-      "item": "pioneers:miserable_obsidian"
-    }
+    "R": "minecraft:redstone_block",
+    "D": "pioneers:miserable_obsidian"
   },
   "result": {
     "id": "pioneers:lively_obsidian",

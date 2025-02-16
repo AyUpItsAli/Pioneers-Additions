@@ -16,6 +16,7 @@ import net.minecraft.text.Text;
 import net.minecraft.util.Formatting;
 import net.minecraft.world.World;
 import org.spongepowered.asm.mixin.Mixin;
+import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
@@ -23,6 +24,8 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 @Mixin(PlayerEntity.class)
 public abstract class MixinPlayerEntity extends LivingEntity {
+    @Shadow public abstract void sendMessage(Text message, boolean overlay);
+
     protected MixinPlayerEntity(EntityType<? extends LivingEntity> entityType, World world) {
         super(entityType, world);
     }
@@ -36,13 +39,13 @@ public abstract class MixinPlayerEntity extends LivingEntity {
                 if (attacker.shouldGainLivesFromKill(pioneer)) {
                     attacker.addLives(PioneersConfig.LIVES_GAINED_ON_KILL);
                     PioneersNetworking.sendToNearbyPlayers((ServerPlayerEntity) attackingPlayer, new PioneerStatusPayload(attackingPlayer, PioneerStatus.GAINED_LIVES));
-                    attackingPlayer.sendMessage(Text.translatable("lives.gained_lives.kill", Pioneer.getLivesText(PioneersConfig.LIVES_GAINED_ON_KILL, Formatting.GREEN), getDisplayName()));
+                    attackingPlayer.sendMessage(Text.translatable("lives.gained_lives.kill", Pioneer.getLivesText(PioneersConfig.LIVES_GAINED_ON_KILL, Formatting.GREEN), getDisplayName()), false);
                 }
             }
             if (pioneer.addLives(-PioneersConfig.LIVES_LOST_ON_DEATH) == 0) {
                 PioneersUtils.handleOutOfLives(this);
             } else {
-                sendMessage(Text.translatable("lives.lives_changed", pioneer.getLivesDisplay()));
+                sendMessage(Text.translatable("lives.lives_changed", pioneer.getLivesDisplay()), false);
             }
         }
     }

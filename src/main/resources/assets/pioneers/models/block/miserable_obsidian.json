@@ -1,6 +1,6 @@
 {
   "parent": "minecraft:block/cube_all",
   "textures": {
-    "all": "pioneers:block/depressed_obsidian"
+    "all": "pioneers:block/miserable_obsidian"
   }
 }

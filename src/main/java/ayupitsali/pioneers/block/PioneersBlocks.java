@@ -15,7 +15,7 @@ import net.minecraft.util.Identifier;
 import java.util.function.Function;
 
 public class PioneersBlocks {
-    public static final Block DEPRESSED_OBSIDIAN = registerBlock("depressed_obsidian",
+    public static final Block MISERABLE_OBSIDIAN = registerBlock("miserable_obsidian",
             new Block(AbstractBlock.Settings.copy(Blocks.OBSIDIAN)),
             (block) -> new BlockItem(block, new Item.Settings()));
     public static final Block LIVELY_OBSIDIAN = registerBlock("lively_obsidian",

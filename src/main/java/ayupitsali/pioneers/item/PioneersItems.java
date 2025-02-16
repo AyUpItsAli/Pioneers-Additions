@@ -27,7 +27,7 @@ public class PioneersItems {
             .displayName(Text.translatable("itemGroup.pioneers"))
             .icon(() -> new ItemStack(PioneersItems.LIFE_TOKEN))
             .entries(((displayContext, entries) -> {
-                entries.add(PioneersBlocks.DEPRESSED_OBSIDIAN);
+                entries.add(PioneersBlocks.MISERABLE_OBSIDIAN);
                 entries.add(PioneersBlocks.LIVELY_OBSIDIAN);
                 entries.add(HOLY_GOLD_INGOT);
                 entries.add(HOLY_DIAMOND);

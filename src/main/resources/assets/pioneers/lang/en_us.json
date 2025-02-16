@@ -25,7 +25,7 @@
   "item.pioneers.life_token.use.failure.disabled": "%ss are disabled on this server",
   "item.pioneers.life_token.use.failure.ghost": "%s cannot use %ss",
   "item.pioneers.life_token.use.failure.max_lives": "You already have the maximum number of %s",
-  "block.pioneers.depressed_obsidian": "Depressed Obsidian",
+  "block.pioneers.miserable_obsidian": "Miserable Obsidian",
   "block.pioneers.lively_obsidian": "Lively Obsidian",
   "pioneers.midnightconfig.title": "Pioneers Additions",
   "pioneers.midnightconfig.category.lives": "Lives System",

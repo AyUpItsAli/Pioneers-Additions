@@ -1,4 +1,4 @@
-package ayupitsali.pioneers.data;
+package ayupitsali.pioneers.util;
 
 import ayupitsali.pioneers.PioneersConfig;
 import net.minecraft.text.MutableText;

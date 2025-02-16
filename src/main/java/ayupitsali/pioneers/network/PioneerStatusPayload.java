@@ -1,7 +1,7 @@
-package ayupitsali.pioneers.client.network;
+package ayupitsali.pioneers.network;
 
 import ayupitsali.pioneers.Pioneers;
-import ayupitsali.pioneers.data.PioneerStatus;
+import ayupitsali.pioneers.util.PioneerStatus;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.network.RegistryByteBuf;
 import net.minecraft.network.codec.PacketCodec;

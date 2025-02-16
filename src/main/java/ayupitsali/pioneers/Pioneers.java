@@ -1,6 +1,7 @@
 package ayupitsali.pioneers;
 
 import ayupitsali.pioneers.block.PioneersBlocks;
+import ayupitsali.pioneers.client.network.PioneersClientNetworking;
 import ayupitsali.pioneers.item.PioneersItems;
 import ayupitsali.pioneers.network.PioneersNetworking;
 import ayupitsali.pioneers.command.LivesCommand;
@@ -37,7 +38,7 @@ public class Pioneers implements ModInitializer, ClientModInitializer, Scoreboar
 
 	@Override
 	public void onInitializeClient() {
-		PioneersNetworking.registerClientReceivers();
+		PioneersClientNetworking.registerClientReceivers();
 	}
 
 	@Override

@@ -1,6 +1,7 @@
 package ayupitsali.pioneers.data;
 
 import ayupitsali.pioneers.PioneersConfig;
+import ayupitsali.pioneers.util.LivesGroup;
 import net.minecraft.text.MutableText;
 import net.minecraft.text.PlainTextContent;
 import net.minecraft.text.Text;

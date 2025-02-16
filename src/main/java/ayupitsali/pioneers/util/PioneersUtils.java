@@ -1,4 +1,4 @@
-package ayupitsali.pioneers.helper;
+package ayupitsali.pioneers.util;
 
 import ayupitsali.pioneers.PioneersConfig;
 import net.minecraft.entity.EntityType;

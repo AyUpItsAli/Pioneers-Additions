@@ -1,11 +1,11 @@
 package ayupitsali.pioneers.item;
 
 import ayupitsali.pioneers.PioneersConfig;
-import ayupitsali.pioneers.client.network.PioneerStatusPayload;
-import ayupitsali.pioneers.data.LivesGroup;
+import ayupitsali.pioneers.network.PioneerStatusPayload;
+import ayupitsali.pioneers.util.LivesGroup;
 import ayupitsali.pioneers.data.Pioneer;
 import ayupitsali.pioneers.data.PioneerData;
-import ayupitsali.pioneers.data.PioneerStatus;
+import ayupitsali.pioneers.util.PioneerStatus;
 import ayupitsali.pioneers.network.PioneersNetworking;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Item;

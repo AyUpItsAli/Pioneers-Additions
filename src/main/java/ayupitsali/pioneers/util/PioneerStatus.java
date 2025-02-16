@@ -1,4 +1,4 @@
-package ayupitsali.pioneers.data;
+package ayupitsali.pioneers.util;
 
 public enum PioneerStatus {
     GAINED_LIVES

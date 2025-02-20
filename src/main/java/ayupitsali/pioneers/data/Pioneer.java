@@ -3,8 +3,8 @@ package ayupitsali.pioneers.data;
 import ayupitsali.pioneers.PioneersConfig;
 import ayupitsali.pioneers.util.LivesGroup;
 import net.minecraft.text.MutableText;
+import net.minecraft.text.PlainTextContent;
 import net.minecraft.text.Text;
-import net.minecraft.text.TextContent;
 import net.minecraft.util.Formatting;
 
 public class Pioneer {
@@ -55,7 +55,7 @@ public class Pioneer {
     }
 
     public static MutableText getLivesText(int lives, Formatting livesFormatting) {
-        MutableText livesText = MutableText.of(TextContent.EMPTY).append(Text.literal(Integer.toString(lives)).formatted(livesFormatting));
+        MutableText livesText = MutableText.of(PlainTextContent.EMPTY).append(Text.literal(Integer.toString(lives)).formatted(livesFormatting));
         if (lives == 1)
             return livesText.append(Text.literal(" " + PioneersConfig.getTermForLivesSingular()));
         else

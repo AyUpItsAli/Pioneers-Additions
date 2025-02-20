@@ -2,20 +2,20 @@
   "type": "minecraft:crafting_shaped",
   "category": "misc",
   "pattern": [
-    "OCO",
-    "COC",
-    "OCO"
+    "OOO",
+    "OTO",
+    "OOO"
   ],
   "key": {
     "O": {
       "item": "minecraft:obsidian"
     },
-    "C": {
-      "item": "minecraft:crying_obsidian"
+    "T": {
+      "item": "minecraft:ghast_tear"
     }
   },
   "result": {
-    "id": "pioneers:miserable_obsidian",
-    "count": 1
+    "item": "minecraft:crying_obsidian",
+    "count": 8
   }
 }

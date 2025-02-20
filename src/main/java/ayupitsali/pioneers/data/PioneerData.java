@@ -3,7 +3,7 @@ package ayupitsali.pioneers.data;
 import ayupitsali.pioneers.Pioneers;
 import com.mojang.authlib.GameProfile;
 import net.minecraft.registry.RegistryWrapper;
-import org.ladysnake.cca.api.v3.component.sync.AutoSyncedComponent;
+import dev.onyxstudios.cca.api.v3.component.sync.AutoSyncedComponent;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.nbt.NbtCompound;
@@ -50,7 +50,7 @@ public class PioneerData implements AutoSyncedComponent {
     }
 
     @Override
-    public void readFromNbt(NbtCompound tag, RegistryWrapper.WrapperLookup wrapperLookup) {
+    public void readFromNbt(NbtCompound tag) {
         pioneers.clear();
         tag.getList("pioneers", NbtElement.COMPOUND_TYPE).forEach((element -> {
             if (element instanceof NbtCompound compound) {
@@ -63,7 +63,7 @@ public class PioneerData implements AutoSyncedComponent {
     }
 
     @Override
-    public void writeToNbt(NbtCompound tag, RegistryWrapper.WrapperLookup wrapperLookup) {
+    public void writeToNbt(NbtCompound tag) {
         NbtList list = new NbtList();
         pioneers.forEach((id, pioneer) -> {
             NbtCompound compound = new NbtCompound();

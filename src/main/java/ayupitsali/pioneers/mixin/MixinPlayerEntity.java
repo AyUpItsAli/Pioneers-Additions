@@ -1,7 +1,7 @@
 package ayupitsali.pioneers.mixin;
 
 import ayupitsali.pioneers.PioneersConfig;
-import ayupitsali.pioneers.network.PioneerStatusPayload;
+import ayupitsali.pioneers.network.PioneerStatusPacket;
 import ayupitsali.pioneers.util.LivesGroup;
 import ayupitsali.pioneers.data.Pioneer;
 import ayupitsali.pioneers.data.PioneerData;
@@ -35,7 +35,7 @@ public abstract class MixinPlayerEntity extends LivingEntity {
                 Pioneer attacker = PioneerData.getPioneer(attackingPlayer);
                 if (attacker.shouldGainLivesFromKill(pioneer)) {
                     attacker.addLives(PioneersConfig.LIVES_GAINED_ON_KILL);
-                    PioneersNetworking.sendToNearbyPlayers((ServerPlayerEntity) attackingPlayer, new PioneerStatusPayload(attackingPlayer, PioneerStatus.GAINED_LIVES));
+                    PioneersNetworking.sendToNearbyPlayers((ServerPlayerEntity) attackingPlayer, new PioneerStatusPacket(attackingPlayer, PioneerStatus.GAINED_LIVES));
                     attackingPlayer.sendMessage(Text.translatable("lives.gained_lives.kill", Pioneer.getLivesText(PioneersConfig.LIVES_GAINED_ON_KILL, Formatting.GREEN), getDisplayName()));
                 }
             }

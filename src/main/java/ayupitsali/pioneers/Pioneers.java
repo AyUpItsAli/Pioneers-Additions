@@ -7,10 +7,10 @@ import ayupitsali.pioneers.network.PioneersNetworking;
 import ayupitsali.pioneers.command.LivesCommand;
 import ayupitsali.pioneers.data.PioneerData;
 import net.fabricmc.api.ClientModInitializer;
-import org.ladysnake.cca.api.v3.component.ComponentKey;
-import org.ladysnake.cca.api.v3.component.ComponentRegistry;
-import org.ladysnake.cca.api.v3.scoreboard.ScoreboardComponentFactoryRegistry;
-import org.ladysnake.cca.api.v3.scoreboard.ScoreboardComponentInitializer;
+import dev.onyxstudios.cca.api.v3.component.ComponentKey;
+import dev.onyxstudios.cca.api.v3.component.ComponentRegistry;
+import dev.onyxstudios.cca.api.v3.scoreboard.ScoreboardComponentFactoryRegistry;
+import dev.onyxstudios.cca.api.v3.scoreboard.ScoreboardComponentInitializer;
 import eu.midnightdust.lib.config.MidnightConfig;
 import net.fabricmc.api.ModInitializer;
 
@@ -31,7 +31,6 @@ public class Pioneers implements ModInitializer, ClientModInitializer, Scoreboar
 		LOGGER.info("Initialising Pioneers Additions!");
 		MidnightConfig.init(MOD_ID, PioneersConfig.class);
 		CommandRegistrationCallback.EVENT.register(LivesCommand::register);
-		PioneersNetworking.registerPayloads();
 		PioneersItems.registerItems();
 		PioneersBlocks.registerBlocks();
 	}

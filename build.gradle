@@ -41,10 +41,10 @@ dependencies {
 	modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
 
 	// Cardinal Components API
-	modImplementation "org.ladysnake.cardinal-components-api:cardinal-components-base:${project.cardinal_components_api_version}"
-	modImplementation "org.ladysnake.cardinal-components-api:cardinal-components-scoreboard:${project.cardinal_components_api_version}"
-	include "org.ladysnake.cardinal-components-api:cardinal-components-base:${project.cardinal_components_api_version}"
-	include "org.ladysnake.cardinal-components-api:cardinal-components-scoreboard:${project.cardinal_components_api_version}"
+	modImplementation "dev.onyxstudios.cardinal-components-api:cardinal-components-base:${project.cardinal_components_api_version}"
+	modImplementation "dev.onyxstudios.cardinal-components-api:cardinal-components-scoreboard:${project.cardinal_components_api_version}"
+	include "dev.onyxstudios.cardinal-components-api:cardinal-components-base:${project.cardinal_components_api_version}"
+	include "dev.onyxstudios.cardinal-components-api:cardinal-components-scoreboard:${project.cardinal_components_api_version}"
 
 	// MidnightLib
 	modImplementation "maven.modrinth:midnightlib:${project.midnightlib_version}"
@@ -66,7 +66,7 @@ processResources {
 }
 
 tasks.withType(JavaCompile).configureEach {
-	it.options.release = 21
+	it.options.release = 17
 }
 
 java {
@@ -75,8 +75,8 @@ java {
 	// If you remove this line, sources will not be generated.
 	withSourcesJar()
 
-	sourceCompatibility = JavaVersion.VERSION_21
-	targetCompatibility = JavaVersion.VERSION_21
+	sourceCompatibility = JavaVersion.VERSION_17
+	targetCompatibility = JavaVersion.VERSION_17
 }
 
 jar {

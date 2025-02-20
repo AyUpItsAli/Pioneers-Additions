@@ -2,7 +2,7 @@ package ayupitsali.pioneers.command;
 
 import ayupitsali.pioneers.Pioneers;
 import ayupitsali.pioneers.PioneersConfig;
-import ayupitsali.pioneers.network.PioneerStatusPayload;
+import ayupitsali.pioneers.network.PioneerStatusPacket;
 import ayupitsali.pioneers.util.LivesGroup;
 import ayupitsali.pioneers.data.Pioneer;
 import ayupitsali.pioneers.data.PioneerData;
@@ -134,7 +134,7 @@ public class LivesCommand {
         other.addLives(livesGiven);
         PlayerEntity otherPlayer = world.getPlayerByUuid(profile.getId());
         if (otherPlayer != null) {
-            PioneersNetworking.sendToNearbyPlayers((ServerPlayerEntity) otherPlayer, new PioneerStatusPayload(otherPlayer, PioneerStatus.GAINED_LIVES));
+            PioneersNetworking.sendToNearbyPlayers((ServerPlayerEntity) otherPlayer, new PioneerStatusPacket(otherPlayer, PioneerStatus.GAINED_LIVES));
             otherPlayer.sendMessage(Text.translatable("lives.lives_received", player.getDisplayName(), Pioneer.getLivesText(livesGiven, Formatting.GREEN)));
         }
         context.getSource().sendFeedback(() -> Text.translatable("commands.lives.give.success", Pioneer.getLivesText(livesGiven, Formatting.GREEN), other.getDisplayName()), false);

@@ -1,7 +1,7 @@
 package ayupitsali.pioneers.item;
 
 import ayupitsali.pioneers.PioneersConfig;
-import ayupitsali.pioneers.network.PioneerStatusPayload;
+import ayupitsali.pioneers.network.PioneerStatusPacket;
 import ayupitsali.pioneers.util.LivesGroup;
 import ayupitsali.pioneers.data.Pioneer;
 import ayupitsali.pioneers.data.PioneerData;
@@ -48,9 +48,10 @@ public class LifeTokenItem extends ShinyItem {
             return TypedActionResult.fail(stack);
         }
         pioneer.addLives(1);
-        PioneersNetworking.sendToNearbyPlayers((ServerPlayerEntity) user, new PioneerStatusPayload(user, PioneerStatus.GAINED_LIVES));
+        PioneersNetworking.sendToNearbyPlayers((ServerPlayerEntity) user, new PioneerStatusPacket(user, PioneerStatus.GAINED_LIVES));
         user.sendMessage(Text.translatable("lives.gained_lives", Pioneer.getLivesText(1, Formatting.GREEN)));
-        stack.decrementUnlessCreative(1, user);
+        if (!user.getAbilities().creativeMode)
+            stack.decrement(1);
         return TypedActionResult.success(stack, false);
     }
 }

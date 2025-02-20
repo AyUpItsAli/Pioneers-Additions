@@ -1,7 +1,6 @@
 package ayupitsali.pioneers.client.network;
 
 import ayupitsali.pioneers.network.PioneerStatusPacket;
-import ayupitsali.pioneers.util.PioneerStatus;
 import net.fabricmc.fabric.api.client.networking.v1.ClientPlayNetworking;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.particle.ParticleTypes;

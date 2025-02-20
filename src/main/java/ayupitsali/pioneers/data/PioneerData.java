@@ -2,7 +2,6 @@ package ayupitsali.pioneers.data;
 
 import ayupitsali.pioneers.Pioneers;
 import com.mojang.authlib.GameProfile;
-import net.minecraft.registry.RegistryWrapper;
 import dev.onyxstudios.cca.api.v3.component.sync.AutoSyncedComponent;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;

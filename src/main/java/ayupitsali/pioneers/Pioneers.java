@@ -3,7 +3,6 @@ package ayupitsali.pioneers;
 import ayupitsali.pioneers.block.PioneersBlocks;
 import ayupitsali.pioneers.client.network.PioneersClientNetworking;
 import ayupitsali.pioneers.item.PioneersItems;
-import ayupitsali.pioneers.network.PioneersNetworking;
 import ayupitsali.pioneers.command.LivesCommand;
 import ayupitsali.pioneers.data.PioneerData;
 import net.fabricmc.api.ClientModInitializer;

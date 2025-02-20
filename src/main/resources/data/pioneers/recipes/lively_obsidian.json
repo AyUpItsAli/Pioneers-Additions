@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    "RRR",
+    "DDD",
+    "RRR"
+  ],
+  "key": {
+    "R": {
+      "item": "minecraft:redstone_block"
+    },
+    "D": {
+      "item": "pioneers:miserable_obsidian"
+    }
+  },
+  "result": {
+    "item": "pioneers:lively_obsidian",
+    "count": 1
+  }
+}

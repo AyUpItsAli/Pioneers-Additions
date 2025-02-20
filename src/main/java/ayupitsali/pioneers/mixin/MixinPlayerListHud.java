@@ -1,7 +1,7 @@
 package ayupitsali.pioneers.mixin;
 
 import ayupitsali.pioneers.Pioneers;
-import ayupitsali.pioneers.data.LivesGroup;
+import ayupitsali.pioneers.util.LivesGroup;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.gui.hud.PlayerListHud;
 import net.minecraft.client.network.PlayerListEntry;

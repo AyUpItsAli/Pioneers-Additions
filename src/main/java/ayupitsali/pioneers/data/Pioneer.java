@@ -1,28 +1,26 @@
 package ayupitsali.pioneers.data;
 
+import ayupitsali.pioneers.PioneersConfig;
+import ayupitsali.pioneers.util.LivesGroup;
 import net.minecraft.text.MutableText;
 import net.minecraft.text.Text;
+import net.minecraft.text.TextContent;
 import net.minecraft.util.Formatting;
 
 public class Pioneer {
     private final PioneerData component;
     private final String name;
-    private LivesGroup livesGroup;
     private int lives;
+    private LivesGroup livesGroup;
 
-    public Pioneer(PioneerData component, String name, LivesGroup livesGroup, int lives) {
+    public Pioneer(PioneerData component, String name, int lives) {
         this.component = component;
         this.name = name;
-        this.livesGroup = livesGroup;
-        this.lives = lives;
-    }
-
-    public Pioneer(PioneerData component, String name, LivesGroup livesGroup) {
-        this(component, name, livesGroup, livesGroup.getMaxLives());
+        setLives(lives);
     }
 
     public Pioneer(PioneerData component, String name) {
-        this(component, name, LivesGroup.getDefaultGroup());
+        this(component, name, LivesGroup.getDefaultGroup().getMaxLives());
     }
 
     public String getName() {
@@ -33,22 +31,23 @@ public class Pioneer {
         return Text.literal(name).formatted(livesGroup.getColourFormatting());
     }
 
-    public LivesGroup getLivesGroup() {
-        return livesGroup;
-    }
-
     public int getLives() {
         return lives;
     }
 
-    public void setLives(int lives) {
+    public int setLives(int lives) {
         this.lives = Math.min(Math.max(lives, 0), LivesGroup.getTotalLives());
         livesGroup = LivesGroup.getGroupForLives(this.lives);
         component.sync();
+        return this.lives;
     }
 
-    public void addLives(int amount) {
-        setLives(lives + amount);
+    public int addLives(int amount) {
+        return setLives(lives + amount);
+    }
+
+    public LivesGroup getLivesGroup() {
+        return livesGroup;
     }
 
     public MutableText getLivesDisplay() {
@@ -56,8 +55,11 @@ public class Pioneer {
     }
 
     public static MutableText getLivesText(int lives, Formatting livesFormatting) {
-        MutableText livesText = Text.literal(Integer.toString(lives)).formatted(livesFormatting);
-        return lives == 1 ? Text.translatable("lives.display.single", new Object[]{livesText}) : Text.translatable("lives.display.multiple", new Object[]{livesText});
+        MutableText livesText = MutableText.of(TextContent.EMPTY).append(Text.literal(Integer.toString(lives)).formatted(livesFormatting));
+        if (lives == 1)
+            return livesText.append(Text.literal(" " + PioneersConfig.getTermForLivesSingular()));
+        else
+            return livesText.append(Text.literal(" " + PioneersConfig.getTermForLivesPlural()));
     }
 
     public boolean shouldGainLivesFromKill(Pioneer killed) {

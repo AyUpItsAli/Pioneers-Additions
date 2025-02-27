@@ -30,7 +30,7 @@ public abstract class MixinPlayerEntity extends LivingEntity {
     @Inject(method = "dropInventory", at = @At("HEAD"))
     private void onDropInventory(final CallbackInfo info) {
         Pioneer pioneer = PioneerData.getPioneer(this);
-        if (!pioneer.getLivesGroup().equals(LivesGroup.GHOST)) {
+        if (!pioneer.getLivesGroup().equals(LivesGroup.GRAY)) {
             if (attackingPlayer != null) {
                 Pioneer attacker = PioneerData.getPioneer(attackingPlayer);
                 if (attacker.shouldGainLivesFromKill(pioneer)) {
@@ -50,6 +50,6 @@ public abstract class MixinPlayerEntity extends LivingEntity {
     @Inject(method = "getDisplayName", at = @At("RETURN"), cancellable = true)
     private void onGetDisplayName(CallbackInfoReturnable<Text> cir) {
         LivesGroup livesGroup = PioneerData.getPioneer(this).getLivesGroup();
-        cir.setReturnValue(cir.getReturnValue().copy().formatted(livesGroup.getColourFormatting()));
+        cir.setReturnValue(cir.getReturnValue().copy().formatted(livesGroup.getColorFormatting()));
     }
 }

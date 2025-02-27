@@ -9,18 +9,18 @@ public enum LivesGroup {
     GREEN(Math.max(PioneersConfig.GREEN_LIVES, 1), Formatting.GREEN),
     YELLOW(Math.max(PioneersConfig.YELLOW_LIVES, 1), Formatting.YELLOW),
     RED(Math.max(PioneersConfig.RED_LIVES, 1), Formatting.RED),
-    GHOST(0, Formatting.GRAY);
+    GRAY(0, Formatting.GRAY);
 
     private final int lives;
-    private final Formatting colourFormatting;
+    private final Formatting colorFormatting;
 
-    LivesGroup(int lives, Formatting colourFormatting) {
+    LivesGroup(int lives, Formatting colorFormatting) {
         this.lives = lives;
-        this.colourFormatting = colourFormatting;
+        this.colorFormatting = colorFormatting;
     }
 
     public static LivesGroup getDefaultGroup() {
-        return switch (PioneersConfig.DEFAULT_COLOUR) {
+        return switch (PioneersConfig.DEFAULT_COLOR) {
             case GREEN -> GREEN;
             case YELLOW -> YELLOW;
             case RED -> RED;
@@ -36,7 +36,7 @@ public enum LivesGroup {
             case GREEN -> RED.getLives() + YELLOW.getLives() + GREEN.getLives();
             case YELLOW -> RED.getLives() + YELLOW.getLives();
             case RED -> RED.getLives();
-            case GHOST -> 0;
+            case GRAY -> 0;
         };
     }
 
@@ -45,7 +45,7 @@ public enum LivesGroup {
             case GREEN -> RED.getLives() + YELLOW.getLives() + 1;
             case YELLOW -> RED.getLives() + 1;
             case RED -> 1;
-            case GHOST -> 0;
+            case GRAY -> 0;
         };
     }
 
@@ -57,11 +57,11 @@ public enum LivesGroup {
         if (lives >= GREEN.getMinLives()) return GREEN;
         if (lives >= YELLOW.getMinLives()) return YELLOW;
         if (lives >= RED.getMinLives()) return RED;
-        return GHOST;
+        return GRAY;
     }
 
-    public Formatting getColourFormatting() {
-        return colourFormatting;
+    public Formatting getColorFormatting() {
+        return colorFormatting;
     }
 
     public String getName() {
@@ -69,11 +69,11 @@ public enum LivesGroup {
             case GREEN -> PioneersConfig.getGreenGroupName();
             case YELLOW -> PioneersConfig.getYellowGroupName();
             case RED -> PioneersConfig.getRedGroupName();
-            case GHOST -> PioneersConfig.getGhostGroupName();
+            case GRAY -> PioneersConfig.getGrayGroupName();
         };
     }
 
     public MutableText getDisplayName() {
-        return Text.literal(getName()).formatted(colourFormatting);
+        return Text.literal(getName()).formatted(colorFormatting);
     }
 }

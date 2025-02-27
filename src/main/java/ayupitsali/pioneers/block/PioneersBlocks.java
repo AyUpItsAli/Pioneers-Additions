@@ -11,6 +11,7 @@ import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.util.Formatting;
 import net.minecraft.util.Identifier;
+import net.minecraft.util.Rarity;
 
 import java.util.function.Function;
 
@@ -19,8 +20,8 @@ public class PioneersBlocks {
             new Block(AbstractBlock.Settings.copy(Blocks.OBSIDIAN)),
             (block) -> new BlockItem(block, new Item.Settings()));
     public static final Block LIVELY_OBSIDIAN = registerBlock("lively_obsidian",
-            new Block(AbstractBlock.Settings.copy(Blocks.OBSIDIAN)),
-            (block) -> new ShinyBlockItem(false, Formatting.RED, block, new Item.Settings()));
+            new Block(AbstractBlock.Settings.copy(Blocks.CRYING_OBSIDIAN)),
+            (block) -> new ShinyBlockItem(false, Formatting.RED, block, new Item.Settings().rarity(Rarity.RARE)));
 
     private static Block registerBlock(String id, Block block, Function<Block, BlockItem> blockItem) {
         Registry.register(Registries.ITEM, Identifier.of(Pioneers.MOD_ID, id), blockItem.apply(block));

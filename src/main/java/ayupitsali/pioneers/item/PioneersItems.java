@@ -11,12 +11,13 @@ import net.minecraft.registry.Registry;
 import net.minecraft.text.Text;
 import net.minecraft.util.Formatting;
 import net.minecraft.util.Identifier;
+import net.minecraft.util.Rarity;
 
 public class PioneersItems {
     public static final Item HOLY_GOLD_INGOT = registerItem("holy_gold_ingot",
-            new ShinyItem(true, Formatting.YELLOW, new Item.Settings()));
+            new ShinyItem(true, Formatting.YELLOW, new Item.Settings().rarity(Rarity.UNCOMMON)));
     public static final Item HOLY_DIAMOND = registerItem("holy_diamond",
-            new ShinyItem(true, Formatting.AQUA, new Item.Settings()));
+            new ShinyItem(true, Formatting.AQUA, new Item.Settings().rarity(Rarity.UNCOMMON)));
     public static final Item LIFE_TOKEN = registerItem("life_token", new LifeTokenItem());
 
     private static Item registerItem(String id, Item item) {

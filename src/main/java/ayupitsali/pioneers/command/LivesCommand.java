@@ -67,7 +67,7 @@ public class LivesCommand {
             context.getSource().sendFeedback(() -> livesGroup.getDisplayName().formatted(Formatting.BOLD), false);
             if (groupPioneers.isEmpty()) {
                 context.getSource().sendFeedback(() -> Text.translatable("commands.lives.list.success.item", Text.translatable("commands.lives.list.success.item.empty").formatted(Formatting.GRAY).formatted(Formatting.ITALIC)), false);
-            } else if (livesGroup.equals(LivesGroup.GHOST)) {
+            } else if (livesGroup.equals(LivesGroup.GRAY)) {
                 groupPioneers.forEach(pioneer -> context.getSource().sendFeedback(() -> Text.translatable("commands.lives.list.success.item", pioneer.getDisplayName()), false));
             } else {
                 groupPioneers.forEach(pioneer -> context.getSource().sendFeedback(() -> Text.translatable("commands.lives.list.success.item", Text.translatable("commands.lives.list.success.item.player", pioneer.getDisplayName(), pioneer.getLivesDisplay())), false));
@@ -94,7 +94,7 @@ public class LivesCommand {
 
     public static int executeReset(CommandContext<ServerCommandSource> context, int lives) {
         Pioneers.PIONEER_DATA.get(context.getSource().getWorld().getScoreboard()).getPioneers().forEach(pioneer -> pioneer.setLives(lives));
-        Formatting formatting = LivesGroup.getGroupForLives(lives).getColourFormatting();
+        Formatting formatting = LivesGroup.getGroupForLives(lives).getColorFormatting();
         context.getSource().sendFeedback(() -> Text.translatable("commands.lives.reset.success", PioneersConfig.getTermForPlayersPlural(), Pioneer.getLivesText(lives, formatting)), false);
         return 1;
     }
@@ -108,7 +108,7 @@ public class LivesCommand {
         PlayerEntity player = context.getSource().getPlayerOrThrow();
         PioneerData pioneersData = Pioneers.PIONEER_DATA.get(world.getScoreboard());
         Pioneer pioneer = pioneersData.getPioneer(player.getGameProfile());
-        if (pioneer.getLivesGroup().equals(LivesGroup.GHOST)) {
+        if (pioneer.getLivesGroup().equals(LivesGroup.GRAY)) {
             context.getSource().sendError(Text.translatable("commands.lives.give.failure.no_lives", PioneersConfig.getTermForLivesPlural()));
             return 0;
         }
@@ -122,8 +122,8 @@ public class LivesCommand {
             context.getSource().sendError(Text.translatable("commands.lives.give.failure.give_self", PioneersConfig.getTermForLivesPlural()));
             return 0;
         }
-        if (other.getLivesGroup().equals(LivesGroup.GHOST)) {
-            context.getSource().sendError(Text.translatable("commands.lives.give.failure.give_ghost", PioneersConfig.getTermForLivesPlural(), LivesGroup.GHOST.getDisplayName()));
+        if (other.getLivesGroup().equals(LivesGroup.GRAY)) {
+            context.getSource().sendError(Text.translatable("commands.lives.give.failure.give_gray", PioneersConfig.getTermForLivesPlural(), LivesGroup.GRAY.getDisplayName()));
             return 0;
         }
         if (other.getLives() == LivesGroup.getTotalLives()) {

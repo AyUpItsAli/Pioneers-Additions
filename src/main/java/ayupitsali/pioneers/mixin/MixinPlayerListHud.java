@@ -19,7 +19,7 @@ public abstract class MixinPlayerListHud {
         ClientWorld world = MinecraftClient.getInstance().world;
         if (world != null) {
             LivesGroup livesGroup = Pioneers.PIONEER_DATA.get(world.getScoreboard()).getPioneer(entry.getProfile()).getLivesGroup();
-            cir.setReturnValue(cir.getReturnValue().copy().formatted(livesGroup.getColourFormatting()));
+            cir.setReturnValue(cir.getReturnValue().copy().formatted(livesGroup.getColorFormatting()));
         }
     }
 }

@@ -39,8 +39,8 @@ public class LifeTokenItem extends ShinyItem {
             return ActionResult.FAIL;
         }
         Pioneer pioneer = PioneerData.getPioneer(user);
-        if (pioneer.getLivesGroup().equals(LivesGroup.GHOST)) {
-            user.sendMessage(Text.translatable("item.pioneers.life_token.use.failure.ghost", LivesGroup.GHOST.getDisplayName(), getUnformattedName()).formatted(Formatting.RED), false);
+        if (pioneer.getLivesGroup().equals(LivesGroup.GRAY)) {
+            user.sendMessage(Text.translatable("item.pioneers.life_token.use.failure.gray", LivesGroup.GRAY.getDisplayName(), getUnformattedName()).formatted(Formatting.RED), false);
             return ActionResult.FAIL;
         }
         if (pioneer.getLives() == LivesGroup.getTotalLives()) {

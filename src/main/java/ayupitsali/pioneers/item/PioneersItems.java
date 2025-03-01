@@ -14,16 +14,17 @@ import net.minecraft.registry.RegistryKeys;
 import net.minecraft.text.Text;
 import net.minecraft.util.Formatting;
 import net.minecraft.util.Identifier;
+import net.minecraft.util.Rarity;
 
 import java.util.function.Function;
 
 public class PioneersItems {
     public static final Item HOLY_GOLD_INGOT = registerItem("holy_gold_ingot",
-            (settings) -> new ShinyItem(true, Formatting.YELLOW, settings), new Item.Settings());
+            (settings) -> new ShinyItem(true, Formatting.YELLOW, settings), new Item.Settings().rarity(Rarity.UNCOMMON));
     public static final Item HOLY_DIAMOND = registerItem("holy_diamond",
-            (settings) -> new ShinyItem(true, Formatting.AQUA, settings), new Item.Settings());
+            (settings) -> new ShinyItem(true, Formatting.AQUA, settings), new Item.Settings().rarity(Rarity.UNCOMMON));
     public static final Item LIFE_TOKEN = registerItem("life_token",
-            LifeTokenItem::new, new Item.Settings().maxCount(16));
+            LifeTokenItem::new, new Item.Settings().rarity(Rarity.EPIC).maxCount(16));
 
     private static Item registerItem(String path, Function<Item.Settings, Item> factory, Item.Settings settings) {
         RegistryKey<Item> registryKey = RegistryKey.of(RegistryKeys.ITEM, Identifier.of(Pioneers.MOD_ID, path));

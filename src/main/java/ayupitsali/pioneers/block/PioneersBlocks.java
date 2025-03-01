@@ -12,6 +12,7 @@ import net.minecraft.registry.RegistryKey;
 import net.minecraft.registry.RegistryKeys;
 import net.minecraft.util.Formatting;
 import net.minecraft.util.Identifier;
+import net.minecraft.util.Rarity;
 
 import java.util.function.BiFunction;
 import java.util.function.Function;
@@ -21,8 +22,8 @@ public class PioneersBlocks {
             Block::new, AbstractBlock.Settings.copy(Blocks.OBSIDIAN),
             BlockItem::new, new Item.Settings());
     public static final Block LIVELY_OBSIDIAN = registerBlock("lively_obsidian",
-            Block::new, AbstractBlock.Settings.copy(Blocks.OBSIDIAN),
-            (block, settings) -> new ShinyBlockItem(false, Formatting.RED, block, settings), new Item.Settings());
+            Block::new, AbstractBlock.Settings.copy(Blocks.CRYING_OBSIDIAN),
+            (block, settings) -> new ShinyBlockItem(false, Formatting.RED, block, settings), new Item.Settings().rarity(Rarity.RARE));
 
     private static Block registerBlock(String path, Function<AbstractBlock.Settings, Block> blockFactory, AbstractBlock.Settings blockSettings,
                                        BiFunction<Block, Item.Settings, Item> itemFactory, Item.Settings itemSettings) {

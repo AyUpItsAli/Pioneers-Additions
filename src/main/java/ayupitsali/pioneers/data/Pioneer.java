@@ -28,7 +28,7 @@ public class Pioneer {
     }
 
     public MutableText getDisplayName() {
-        return Text.literal(name).formatted(livesGroup.getColourFormatting());
+        return Text.literal(name).formatted(livesGroup.getColorFormatting());
     }
 
     public int getLives() {
@@ -51,7 +51,7 @@ public class Pioneer {
     }
 
     public MutableText getLivesDisplay() {
-        return Pioneer.getLivesText(lives, livesGroup.getColourFormatting());
+        return Pioneer.getLivesText(lives, livesGroup.getColorFormatting());
     }
 
     public static MutableText getLivesText(int lives, Formatting livesFormatting) {
@@ -64,7 +64,7 @@ public class Pioneer {
 
     public boolean shouldGainLivesFromKill(Pioneer killed) {
         return switch (livesGroup) {
-            case GREEN, GHOST -> false;
+            case GREEN, GRAY -> false;
             case YELLOW -> killed.getLivesGroup().equals(LivesGroup.GREEN);
             case RED -> killed.getLivesGroup().equals(LivesGroup.YELLOW) || killed.getLivesGroup().equals(LivesGroup.GREEN);
         };
